@@ -1,0 +1,20 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: consul-consumer
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        register: false
+      config:
+        # Key/Values 中的 Key，Value 对应整个配置文件
+        data-key: consul-consumer
+        watch:
+          # 默认为true，如果为false，则不会监听配置变化
+          enabled: true
+        import-check:
+          enabled: false
+        format: yaml
