@@ -9,23 +9,22 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
 @RefreshScope
 public class ServiceController {
 
-    @Autowired
+    @Resource
     private LoadBalancerClient loadBalancerClient;
-    @Autowired
+    @Resource
     private DiscoveryClient discoveryClient;
     @Value("${test.a}")
     private String a;
 
     /**
      * 获取所有的服务
-     *
-     * @return
      */
     @RequestMapping("services")
     public Object getServices() {
@@ -38,8 +37,6 @@ public class ServiceController {
 
     /**
      * 轮训获取服务中的其中一个
-     *
-     * @return
      */
     @RequestMapping("discover")
     public String discover() {
@@ -49,8 +46,6 @@ public class ServiceController {
 
     /**
      * 获取配置文件
-     *
-     * @return
      */
     @RequestMapping("config")
     public String config() {
