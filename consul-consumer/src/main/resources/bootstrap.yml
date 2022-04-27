@@ -19,3 +19,5 @@ spring:
           enabled: false
         format: yaml
         default-context: consul-consumer
+        prefixes:
+          - config
